@@ -21,7 +21,7 @@ EOT
     location                       = string
     name                           = string
     resource_group_name            = string
-    arc_agent_auto_upgrade_enabled = optional(bool, true)
+    arc_agent_auto_upgrade_enabled = optional(bool) # Default: true
     arc_agent_desired_version      = optional(string)
     tags                           = optional(map(string))
     identity = object({
@@ -29,7 +29,7 @@ EOT
     })
     azure_active_directory = optional(object({
       admin_group_object_ids = optional(list(string))
-      azure_rbac_enabled     = optional(bool, false)
+      azure_rbac_enabled     = optional(bool) # Default: false
       tenant_id              = optional(string)
     }))
   }))
