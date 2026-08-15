@@ -16,7 +16,7 @@ output "arc_kubernetes_provisioned_clusters_arc_agent_desired_version" {
 }
 output "arc_kubernetes_provisioned_clusters_azure_active_directory" {
   description = "Map of azure_active_directory values across all arc_kubernetes_provisioned_clusters, keyed the same as var.arc_kubernetes_provisioned_clusters"
-  value       = { for k, v in azurerm_arc_kubernetes_provisioned_cluster.arc_kubernetes_provisioned_clusters : k => v.azure_active_directory if v.azure_active_directory != null && length(v.azure_active_directory) > 0 }
+  value       = { for k, v in azurerm_arc_kubernetes_provisioned_cluster.arc_kubernetes_provisioned_clusters : k => one(v.azure_active_directory) if v.azure_active_directory != null && length(v.azure_active_directory) > 0 }
 }
 output "arc_kubernetes_provisioned_clusters_distribution" {
   description = "Map of distribution values across all arc_kubernetes_provisioned_clusters, keyed the same as var.arc_kubernetes_provisioned_clusters"
@@ -24,7 +24,7 @@ output "arc_kubernetes_provisioned_clusters_distribution" {
 }
 output "arc_kubernetes_provisioned_clusters_identity" {
   description = "Map of identity values across all arc_kubernetes_provisioned_clusters, keyed the same as var.arc_kubernetes_provisioned_clusters"
-  value       = { for k, v in azurerm_arc_kubernetes_provisioned_cluster.arc_kubernetes_provisioned_clusters : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_arc_kubernetes_provisioned_cluster.arc_kubernetes_provisioned_clusters : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "arc_kubernetes_provisioned_clusters_infrastructure" {
   description = "Map of infrastructure values across all arc_kubernetes_provisioned_clusters, keyed the same as var.arc_kubernetes_provisioned_clusters"
